@@ -6,7 +6,7 @@ from random import uniform
 
 # create a file
 def CreateFile(vertices, length):
-    file = open("matrix.out", "w")
+    file = open("graph.out", "w")
     
     file.write("{}\n".format("MI"))
 
