@@ -21,7 +21,7 @@ Plik zawiera macierz incydencji
 
 Przykladowy output:
 
-MI
+MI 
 0  0  0  0  1  
 0  0  0  1  0  
 0  0  0  0  0  
