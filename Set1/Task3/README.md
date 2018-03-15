@@ -18,6 +18,6 @@ Wygenerowany graf moze byc niespojny.
 
 
 Output:
-Plik zawiera macierz incydencji
+Plik zawiera macierz sasiedztwa
 
 Przykladowy output w pliku graph.txt

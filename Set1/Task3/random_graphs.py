@@ -8,7 +8,7 @@ from random import uniform
 def CreateFile(vertices, length):
     file = open("graph.out", "w")
     
-    file.write("{}\n".format("MI"))
+    file.write("{}\n".format("MS"))
 
     for i in range(length):
         for j in range(length):
