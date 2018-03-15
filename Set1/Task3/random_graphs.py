@@ -21,6 +21,7 @@ def CreateFile(vertices, length):
 
 
 
+
 # check if valid arguments
 if len(argv) != 4:
     print("Prosze podac: l lub p, liczbe krawedzi lub prawdopodobienstwo oraz liczbe wierzcholkow HE")

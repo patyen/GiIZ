@@ -16,6 +16,7 @@ b) Podajac liczbe krawedzi:
 Wygenerowany graf moze byc niespojny.
 
 
+
 Output:
 Plik zawiera macierz incydencji
 
