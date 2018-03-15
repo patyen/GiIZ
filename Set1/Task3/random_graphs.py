@@ -8,7 +8,7 @@ from random import uniform
 def CreateFile(vertices, length):
     file = open("matrix.out", "w")
     
-    file.write("{}\n".format("MS"))
+    file.write("{}\n".format("MI"))
 
     for i in range(length):
         for j in range(length):
