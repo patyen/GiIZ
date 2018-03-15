@@ -19,4 +19,4 @@ Wygenerowany graf moze byc niespojny.
 Output:
 Plik zawiera macierz incydencji
 
-Przykladowy output w pliku graph.out
+Przykladowy output w pliku graph.txt
