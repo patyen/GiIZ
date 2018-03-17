@@ -4,10 +4,7 @@ import matplotlib.pyplot as plt
 import sys
 file = open(sys.argv[1], "r")
 
-data = []
-for i in file:
-    data.append(i.split())
-
+data = [i.split() for i in file  if i != 'MI\n']
 r = 1
 x = []
 y = []
