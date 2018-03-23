@@ -21,3 +21,6 @@ Output:
 Plik zawiera macierz sasiedztwa
 
 Przykladowy output w pliku graph.txt
+
+
+Autor: Patryk Nguyen 15.03.2018

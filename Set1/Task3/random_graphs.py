@@ -12,7 +12,7 @@ def CreateFile(vertices, length):
 
     for i in range(length):
         for j in range(length):
-            file.write("{} {}".format(vertices[i][j], ' '))
+            file.write("{} ".format(vertices[i][j], ' '))
         file.write("{}".format('\n'))
 
 
