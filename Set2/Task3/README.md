@@ -2,6 +2,8 @@ Program do znajdowania najwiekszej skladowej w grafie.
 
 Do programu nalezy podac plik z lista sasiedztwa
 
+Wymagania: python 3.6
+
 Uzycie:
 python greatest_consistent_element.py plik_wejsciowy
 
