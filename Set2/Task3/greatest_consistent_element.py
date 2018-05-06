@@ -40,8 +40,6 @@ for i in range(len(ls)):
         ls[i].remove('')
 f.close()
 
-    
-
 
 # set visited list to work
 for i in range(vertices):
