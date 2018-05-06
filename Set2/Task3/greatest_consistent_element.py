@@ -4,7 +4,7 @@ from sys import argv
 
 def next_nb(ls, visited, iterator, element):
     for i in range(len(ls[iterator])):
-        print(f"{visited} {ls[iterator][i]}")
+        #print(f"{visited} {ls[iterator][i]}")
         if  visited[ls[iterator][i] - 1] == 0:
             visited[ls[iterator][i] - 1] = element
             next_nb(ls, visited, ls[iterator][i] - 1, element)
@@ -16,8 +16,10 @@ if len(argv) < 2:
     print("Podaj input")
     exit()
 
-
+# whole graph
 ls = []
+# contains information about every consistent element - 
+#value of given element of the array equals the index of consistent element
 visited = []
 vertices = 0
 
@@ -50,7 +52,7 @@ element = 1
 i = 0
 
 
-# while there's any not visited vertex 
+# while there's any unvisited vertex 
 while 0 in visited:
     # if not visited, start recursively from this vertex
     if visited[i] == 0:
@@ -74,19 +76,28 @@ for i in visited:
     if current_count > max_count:
         max_count = current_count
         max_index = i
-print(max_count, max_index)
-print(ls)
 
 
 # greatest consistent element
-gse = [[j for j in ls[i]]  for i in range(len(visited)) if visited[i] == max_index]
-print(gse)
+#gce = [[j for j in ls[i]]  for i in range(len(visited)) if visited[i] == max_index]
+gce = [[j for j in ls[i]] if visited[i] == max_index else [0] for i in range(len(visited)) ]
+
+
+#print(max_count, max_index)
+#print(ls)
+#print(gce)
+#print(visited)
 
 
 with open("graph_out.txt", 'w') as f:
     f.write("LS\n")
-    for i in range(len(gse)):
-        for j in gse[i]:
+    for i in range(len(gce)):
+        for j in gce[i]:
             f.write(f"{j} ")
         f.write('\n')
 f.close()
+
+if (max_count == len(ls)):
+    print("graf spojny")
+else:
+    print("graf niespojny")
