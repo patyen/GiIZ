@@ -5,7 +5,7 @@ file = open(sys.argv[1], "r")
 
 data = [i.split() for i in file  if i != 'MI\n']
 
-flag = 1;
+flag = 1
 data_size = len(data)
 if(data_size) > 2:
     while flag:
@@ -21,11 +21,11 @@ if(data_size) > 2:
         back2 = tmp2[:]
         
         if(first_index < second_index):
-            del data[second_index]
-            del data[first_index]
+            data.pop(second_index)
+            data.pop(first_index)
         else:
-            del data[first_index]
-            del data[second_index]
+            data.pop(first_index)
+            data.pop(second_index)
     
         zipped = zip(tmp1, tmp2)
         flag = 0
@@ -43,9 +43,8 @@ if(data_size) > 2:
 
         if tmp1 in data or tmp2 in data:
             flag = 1
-
-        data.append(back1)
-        data.append(back2)
+            data.append(back1)
+            data.append(back2)
                     
 data.append(tmp1)
 data.append(tmp2)
