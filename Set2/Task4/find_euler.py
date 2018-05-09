@@ -136,7 +136,7 @@ def findEuler(graph, tour):
 
 if __name__ == "__main__":
     # default number of vertices in the graph
-    vertices = 7
+    vertices = int(input("Podaj liczbe krawedzi"))
 
     sequence = []
     while True:
@@ -159,6 +159,8 @@ if __name__ == "__main__":
     #neighbourList conversion
     neighbourList= [ [ vertex + 1 for vertex in range(len(row)) if row[vertex] ]for row in adjacencyMatrix]
 
-    tour = []
-    print(findEuler(neighbourList, tour))
-    print(tour)
+    while True:
+        tour = []
+        if findEuler(neighbourList, tour):
+            print(tour)
+            break
