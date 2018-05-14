@@ -44,6 +44,12 @@ def main():
     graph_in = open("graph_in.txt", "r")
 
     matrix = [ line.replace("\n", "").split(" ") for line in graph_in.readlines() ]
+    
+    #pozbywanie się pustych elementów
+    for row in matrix:
+        if '' in row:
+            row.remove('')	
+
     #konwersja na int
     matrix = [ [int(i) for i in row ]  for row in matrix ]
     print(matrix)
