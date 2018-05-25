@@ -41,6 +41,9 @@ def createConnection(matrix, fromLayer, destinationLayer, layers):
     randomFrom = random.choice(fromVertices)
     randomDestination = random.choice(destinationVertices)
 
+    if random == randomFrom:#in case connection is within this same layer
+        return False
+
     if not connectionExist(matrix, randomFrom, randomDestination):
         matrix[randomFrom][randomDestination] = 1
         return True
@@ -112,7 +115,7 @@ def generateMatrixNetwork(layers, N):
 
 
     #adding random connections
-    direction = ['r', 'l']
+    direction = ['r', 'l', 'x']
     randomCount = 2 * N
 
     while randomCount > 0:
@@ -123,6 +126,9 @@ def generateMatrixNetwork(layers, N):
             destinationLayer = randomLayer + 1
         elif randomDirection == 'l':
             destinationLayer = randomLayer - 1
+        else:
+            destinationLayer = randomLayer #connection within this same layer
+
 
         if createConnection(matrixNetwork, randomLayer, destinationLayer, layers):
             randomCount -= 1# reduce random vertices to add
@@ -158,6 +164,10 @@ def generateNetwork(N):
 
     print("Output")
     printOutput(matrixNetwork)
+    return matrixNetwork
 
 if __name__ == "__main__":
-    generateNetwork(int(sys.argv[1]))
+    output = generateNetwork(int(sys.argv[1]))
+    with open("matrix.txt", "w") as fileOut:
+        for row in output:
+            print(*row, file=fileOut)
