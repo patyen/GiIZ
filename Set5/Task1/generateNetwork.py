@@ -41,7 +41,7 @@ def createConnection(matrix, fromLayer, destinationLayer, layers):
     randomFrom = random.choice(fromVertices)
     randomDestination = random.choice(destinationVertices)
 
-    if random == randomFrom:#in case connection is within this same layer
+    if randomDestination == randomFrom:#in case connection is within this same layer
         return False
 
     if not connectionExist(matrix, randomFrom, randomDestination):
