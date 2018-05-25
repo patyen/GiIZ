@@ -37,7 +37,7 @@ def getMinimumResidualCap(networkFlow, networkCapacity, p):
 
         #print("previous")
         #print(previousVertice)
-
+        '''
         if networkFlow[currentVertice][previousVertice] != '*':  # connection exist from current to previous
             connectionCapacity = networkCapacity[currentVertice][previousVertice] - networkFlow[currentVertice][previousVertice]
             if connectionCapacity != 0: #there's still remaining flow, so connection is possible
@@ -45,7 +45,16 @@ def getMinimumResidualCap(networkFlow, networkCapacity, p):
 
         if foundFlag == False: # connection exist from previous to current
             connectionCapacity = networkCapacity[previousVertice][currentVertice] - networkFlow[previousVertice][currentVertice]
+        '''
 
+        if networkFlow[previousVertice][currentVertice] != '*':  # if(u,v vertice exist)
+            connectionCapacity = networkCapacity[previousVertice][currentVertice] - networkFlow[previousVertice][
+                currentVertice]
+            if connectionCapacity != 0:  # there's still remaining flow, so connection is possible
+                foundFlag = True
+
+        if foundFlag == False:  # connection doesnt exist or there's no reamining flow
+            connectionCapacity = networkFlow[currentVertice][previousVertice]#bfs assures that it doesnt need further check
 
         if connectionCapacity < minResidualCapacity:#if found the lowest capacity in the path
             minResidualCapacity = connectionCapacity
