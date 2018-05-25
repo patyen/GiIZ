@@ -35,8 +35,8 @@ def getMinimumResidualCap(networkFlow, networkCapacity, p):
         previousVertice = p[currentVertice]
         foundFlag = False
 
-        print("previous")
-        print(previousVertice)
+        #print("previous")
+        #print(previousVertice)
 
         if networkFlow[currentVertice][previousVertice] != '*':  # connection exist from current to previous
             connectionCapacity = networkCapacity[currentVertice][previousVertice] - networkFlow[currentVertice][previousVertice]
@@ -50,8 +50,8 @@ def getMinimumResidualCap(networkFlow, networkCapacity, p):
         if connectionCapacity < minResidualCapacity:#if found the lowest capacity in the path
             minResidualCapacity = connectionCapacity
 
-        print(connectionCapacity)
-        print(foundFlag)
+        #print(connectionCapacity)
+        #print(foundFlag)
 
         currentVertice = previousVertice#move backwards
 
@@ -71,8 +71,6 @@ def FordFulkerson(networkCapacity):
         minResidualCapacity = getMinimumResidualCap(networkFlow, networkCapacity, p)#line 4
         currentVertice = verticesNmb - 1#start from the output
 
-        print(str(currentVertice) + "it's current")
-
         print(p)
         print(minResidualCapacity)
 
@@ -80,12 +78,9 @@ def FordFulkerson(networkCapacity):
             modified = False
             previousVertice = p[currentVertice]
 
-            print(str(previousVertice))
-
             if networkFlow[previousVertice][currentVertice] != '*':  #if(u,v vertice exist)
                 connectionCapacity = networkCapacity[previousVertice][currentVertice] - networkFlow[previousVertice][currentVertice]
                 if connectionCapacity != 0:  # there's still remaining flow, so connection is possible
-                    print(str(previousVertice) + "remaining flow")
                     networkFlow[previousVertice][currentVertice] += minResidualCapacity
                 else:#I am not quite sure
                     networkFlow[previousVertice][currentVertice] -= minResidualCapacity
@@ -96,6 +91,9 @@ def FordFulkerson(networkCapacity):
                 networkFlow[currentVertice][previousVertice] -= minResidualCapacity
 
             currentVertice = previousVertice
+
+        for row in networkFlow:
+            print(row)
 
             '''
             if networkFlow[currentVertice][previousVertice] != '*':  # connection exist from current to previous
@@ -113,7 +111,6 @@ def FordFulkerson(networkCapacity):
 
 
         p = [] #clear p for the bfs
-        break
 
     print("output")
     for row in networkFlow:

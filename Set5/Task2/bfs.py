@@ -24,8 +24,9 @@ def bfs(networkFlow, networkCapacity, p, startNmb):
                 if remainingFlow != 0:#cannot be 0?
                     modifyVertice(d, p, Q, v, u)
             elif networkFlow[u][v] != '*':#connection may exist in the opposite direction?(maybe after for loop??
-                remainingFlow = networkCapacity[u][v] - networkFlow[u][v]
-                if remainingFlow != 0:
+                '''remainingFlow = networkCapacity[u][v] - networkFlow[u][v]
+                if remainingFlow != 0:'''
+                if networkFlow[u][v] != 0:
                     modifyVertice(d, p, Q, v, u)
 
             #check if connection exists
