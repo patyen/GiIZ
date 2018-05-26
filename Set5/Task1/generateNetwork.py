@@ -172,7 +172,7 @@ def generateNetwork(N):
 def euklid_dist(a,b, c ,d):
     return np.sqrt((a - c)**2 + (b - d)**2)
 def draw_network(matrixNetwork, layers):
-    layer_step = 4
+    layer_step = 4 * (len(layers) -2)
     node_step = 2
     print(layers)
     xs = []
@@ -188,13 +188,13 @@ def draw_network(matrixNetwork, layers):
     
     #drawing lines
     style="Simple,tail_width=0.5,head_width=4,head_length=8"    
-    kw = dict(arrowstyle=style, color="k")
+    kw = dict(arrowstyle=style, color="red")
     for i, node in enumerate(matrixNetwork):
         for j, neigh in enumerate(node):
             if neigh != 0:
                 a = patches.FancyArrowPatch((xs[i], ys[i]), (xs[j], ys[j]),connectionstyle="arc3,rad=-0.2", **kw)
                 plt.gca().add_patch(a)
-                plt.text(xs[i] + (xs[j] - xs[i])/2,ys[i] + (ys[j] - ys[i])/2, str(neigh) ,bbox=dict(facecolor='red'))
+                plt.text(xs[i] + (xs[j] - xs[i])*0.4,ys[i] + (ys[j] - ys[i])*0.4, str(neigh) )
                 #plt.arrow(xs[i], ys[i], 0.9*(xs[j] - xs[i]), 0.9*(ys[j] - ys[i]), head_width = 0.1)
     
     plt.scatter(xs, ys, c='b')
