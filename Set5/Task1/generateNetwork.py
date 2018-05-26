@@ -1,5 +1,8 @@
 import sys
 import random
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+import numpy as np
 
 #N - number of layers(1...N) - except input and output
 #layer 0 - input
@@ -164,10 +167,42 @@ def generateNetwork(N):
 
     print("Output")
     printOutput(matrixNetwork)
-    return matrixNetwork
+    return matrixNetwork, layers
+
+def euklid_dist(a,b, c ,d):
+    return np.sqrt((a - c)**2 + (b - d)**2)
+def draw_network(matrixNetwork, layers):
+    layer_step = 4
+    node_step = 2
+    print(layers)
+    xs = []
+    ys = []
+    
+    #points coordynates
+    for layer_index in range(len(layers)):
+        for node_index in range(layers[layer_index]):
+            xs.append(layer_step * layer_index )
+            ys.append(node_step * node_index - (layers[layer_index] -1)*node_step/2)
+    xs = np.array(xs)
+    ys = np.array(ys)
+    
+    #drawing lines
+    style="Simple,tail_width=0.5,head_width=4,head_length=8"    
+    kw = dict(arrowstyle=style, color="k")
+    for i, node in enumerate(matrixNetwork):
+        for j, neigh in enumerate(node):
+            if neigh != 0:
+                a = patches.FancyArrowPatch((xs[i], ys[i]), (xs[j], ys[j]),connectionstyle="arc3,rad=-0.2", **kw)
+                plt.gca().add_patch(a)
+                plt.text(xs[i] + (xs[j] - xs[i])/2,ys[i] + (ys[j] - ys[i])/2, str(neigh) ,bbox=dict(facecolor='red'))
+                #plt.arrow(xs[i], ys[i], 0.9*(xs[j] - xs[i]), 0.9*(ys[j] - ys[i]), head_width = 0.1)
+    
+    plt.scatter(xs, ys, c='b')
+    plt.show()
 
 if __name__ == "__main__":
-    output = generateNetwork(int(sys.argv[1]))
+    output, layers = generateNetwork(int(sys.argv[1]))
     with open("matrix.txt", "w") as fileOut:
         for row in output:
             print(*row, file=fileOut)
+    draw_network(output, layers)
